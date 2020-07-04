@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block Title%}Публикация - {{ publication.title }} {% endblock %}
+{% block content %}
+<h2>{{ publication.title }}</h2>
+<i>{{ publication.date }}</i>
+<p>{{ publication.text }}</p>
+<table>
+    {% for comment in comments %}
+    <tr>
+        <td>{{ comment.date }}</td>
+        <td>{{ comment.text }}</td>
+        <td>{{ comment.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<form action="/publication/{{id}}/comment" method="post">
+    {% csrf_token %}
+    <p style="color: darkred">{{ error }}</p>
+    <input type="text" name="name" placeholder="Имя">
+    <br><br>
+    <textarea name="text" placeholder="Комментарий"></textarea>
+    <br><br>
+    <button>Отправить</button>
+</form>
+{% endblock %}
