@@ -47,7 +47,7 @@ def publication(request, pub_id):
         publication = Publication.objects.get(id=pub_id)
     except Publication.DoesNotExist:
         return redirect('/')
-    return render(request, 'publication.html', publication)
+    return render(request, 'publication.html', {'publication': publication})
 
 
 def post(request):
