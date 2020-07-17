@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block Title%} Публикации - {{ title }} {% endblock %}
 {% block content %}
-<table>
-    <thead>
-    <th><b>#</b></th>
-    <th><b>Публикация</b></th>
-    <th><b>Дата</b></th>
-    </thead>
     {% for publication in publications %}
-    <tr>
-        <td>{{ publication.id }}</td>
-        <td><a href="/publication/{{publication.id}}">{{ publication.title }}</a></td>
-        <td>{{ publication.date}}</td>
-    </tr>
+        <div class="card mb-4">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{ publication.title }}</h2>
+            <p class="card-text">{{ publication.text|truncatechars:100 }}</p>
+            <a href="/publication/{{ publication.id }}" class="btn btn-primary">Подробнее →</a>
+          </div>
+          <div class="card-footer text-muted">
+            {{ publication.date|date:"d.m.Y H:s" }}
+          </div>
+        </div>
     {% endfor %}
-</table>
 {% endblock %}
