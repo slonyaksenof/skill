@@ -18,10 +18,9 @@ from django.urls import path
 from web import views
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.main),
     path('contacts', views.contacts),
     path('publication/<int:pub_id>', views.publication),
-    path('publications', views.publications),
     path('post', views.post),
     path('contact', views.contact),
     path('publication/<int:pub_id>/comment', views.comment),

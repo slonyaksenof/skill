@@ -3,43 +3,16 @@ from datetime import datetime
 
 from web.models import Publication
 
-publications_data = [
-    {
-        'id': 0,
-        'title': 'Название',
-        'date': datetime.now(),
-        'text': 'lalala',
-        'comments': [
-            {
-                'name': 'Vasya',
-                'text': 'cool',
-                'id': 0,
-                'date': datetime.now(),
-            }
-        ]
-    },
-    {
-        'id': 1,
-        'title': 'Название_1',
-        'date': datetime.now(),
-        'text': 'lalala',
-        'comments': [],
-    },
-]
 contact_data = []
-
-
-def index(request):
-    return render(request, 'index.html', {})
 
 
 def contacts(request):
     return render(request, 'contacts.html', {})
 
 
-def publications(request):
+def main(request):
     publications_sorted = Publication.objects.order_by('-date')
-    return render(request, 'publications.html', {'publications': publications_sorted})
+    return render(request, 'main.html', {'publications': publications_sorted})
 
 
 def publication(request, pub_id):
