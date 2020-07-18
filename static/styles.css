@@ -1,0 +1,31 @@
+body {
+    padding-top: 56px;
+}
+
+.contact {
+    color: black;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    background-position: left center;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.contact:hover {
+    color: rgba(0, 0, 0, 0.74);
+    text-decoration: none;
+}
+
+.instagram {
+    background-image: url("/static/instagram.svg");
+}
+
+.vk {
+    background-image: url("/static/vk.svg");
+}
+
+.telegram {
+    background-size: 22px;
+    background-image: url("/static/telegram.svg");
+}
