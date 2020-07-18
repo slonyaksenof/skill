@@ -3,12 +3,6 @@ from datetime import datetime
 
 from web.models import Publication
 
-contact_data = []
-
-
-def contacts(request):
-    return render(request, 'contacts.html', {})
-
 
 def main(request):
     publications_sorted = Publication.objects.order_by('-date')
@@ -35,25 +29,6 @@ def post(request):
                 'error': 'title и text не должны быть пустыми'
             })
     return render(request, 'post.html')
-
-
-def contact(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        text = request.POST.get('text')
-        if name and text:
-            contact_data.append({
-                'id': len(contact_data),
-                'name': name,
-                'date': datetime.now(),
-                'text': text
-            })
-            return redirect('/contacts')
-        else:
-            return render(request, 'contacts.html', {
-                'error': 'name и text не должны быть пустыми'
-            })
-    return render(request, 'contacts.html')
 
 
 def comment(request, pub_id: int):
